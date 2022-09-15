@@ -1,4 +1,4 @@
-package com.betheve.betheve.common.config;
+package com.betheve.betheve.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

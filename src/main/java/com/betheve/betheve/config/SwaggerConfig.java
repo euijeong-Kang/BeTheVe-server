@@ -24,8 +24,8 @@ public class SwaggerConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("dGuider")
-                        .description("dartmedia dGuider Service")
+                        .title("BeTheVe")
+                        .description("채식 소개 서비스")
                         .version("v0.0.1")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()

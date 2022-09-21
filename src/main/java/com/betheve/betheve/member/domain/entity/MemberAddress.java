@@ -10,8 +10,6 @@ import javax.persistence.Embeddable;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Embeddable
 public class MemberAddress extends Address {
 

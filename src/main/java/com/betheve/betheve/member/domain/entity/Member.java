@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Member {
 
     @Id
-    @GeneratedValue(generator = "auto")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MemberId")
     private long memberId;
 

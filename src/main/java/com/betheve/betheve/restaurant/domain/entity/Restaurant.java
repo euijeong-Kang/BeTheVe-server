@@ -15,7 +15,7 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(generator = "auto")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long restaurantId;
 
     private String restaurantName;

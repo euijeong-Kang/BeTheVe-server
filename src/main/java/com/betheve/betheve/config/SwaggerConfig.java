@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public OpenAPI springShopOpenAPI() {
 
         /**
-         * Swagger 접속 기본 URL : http://localhost:8080/swagger-ui/index.html (기본 경로를 사용하는
+         * Swagger 접속 기본 URL : http://localhost:8097/swagger-ui/index.html (기본 경로를 사용하는
          * 경우 )
          * Api 정보 경로 : /v3/api-docs (기본 경로를 사용하는 경우) --> Explore 입력 후 조회
          */

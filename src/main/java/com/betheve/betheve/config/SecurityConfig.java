@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs").permitAll() // swagger 접근
-                .antMatchers("/login", "/access/renew").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
 
         return http.build();

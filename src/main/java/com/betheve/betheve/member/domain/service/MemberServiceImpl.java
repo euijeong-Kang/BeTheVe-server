@@ -1,18 +1,23 @@
 package com.betheve.betheve.member.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
-import com.betheve.betheve.member.domain.entity.dto.MemberDto;
 import com.betheve.betheve.member.domain.repository.MemberRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@AllArgsConstructor
+@Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 
-    @Autowired
     private final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public List<Member> getAllMembers() {

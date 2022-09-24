@@ -1,5 +1,6 @@
 package com.betheve.betheve.member.domain.entity;
 
+import com.betheve.betheve.member.domain.entity.id.MemberId;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,28 +11,23 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-@Table(name = "Member")
+@Table(name = "member")
 @AllArgsConstructor
 public class Member {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "MemberId")
-    private long memberId;
+    @EmbeddedId
+    MemberId memberId;
 
-    @Column(name = "AccountId")
-    private String accountId;
-
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "MemberName")
+    @Column(name = "member_name")
     private String memberName;
 
-    @Column(name = "NicName")
+    @Column(name = "nickname")
     private String nickName;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
     @Embedded

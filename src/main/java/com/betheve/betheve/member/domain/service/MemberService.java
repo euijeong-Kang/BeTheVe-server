@@ -1,12 +1,9 @@
 package com.betheve.betheve.member.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
-import com.betheve.betheve.member.domain.entity.dto.MemberDto;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface MemberService {
 
     /**

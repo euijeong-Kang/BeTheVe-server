@@ -5,14 +5,21 @@ import com.betheve.betheve.restaurant.domain.entity.dto.RegisterRestaurantDto;
 import com.betheve.betheve.restaurant.domain.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@AllArgsConstructor
+@Service
+@Transactional
 public class RestaurantServiceImpl implements RestaurantService{
 
     @Autowired
     private final RestaurantRepository restaurantRepository;
+
+    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
+    }
 
     @Override
     public Restaurant create(RegisterRestaurantDto restaurantDto) {

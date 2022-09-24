@@ -7,10 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter @Setter
-@Table(name = "Restaurant")
+@Table(name = "restaurant")
+@Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
 public class Restaurant {
@@ -40,6 +42,14 @@ public class Restaurant {
     private LocalDateTime lastUpdatedDate;
 
     private Certification certification;
+
+    @ElementCollection
+    @CollectionTable (
+            name = "menu_list",
+            joinColumns = @JoinColumn(name = "restaurant_id")
+    )
+    @OrderColumn(name = "menu_id")
+    List<Menu> menuList;
 
 
 

@@ -1,6 +1,7 @@
 package com.betheve.betheve.member.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
+import com.betheve.betheve.member.domain.entity.dto.MemberDto;
 import com.betheve.betheve.member.domain.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,16 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member getMember(long memberId){
         return memberRepository.findById(memberId).orElseThrow();
+    }
+
+    @Override
+    public Member createMember(MemberDto memberDto) {
+
+        Member newMember = new Member();
+
+        memberRepository.save(newMember);
+
+        return newMember;
     }
 
     @Override

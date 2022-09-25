@@ -30,6 +30,8 @@ public class Member {
     @Column(name = "email")
     private String email;
 
+    private UserRole userRole;
+
     @Embedded
     private MemberAddress address;
 

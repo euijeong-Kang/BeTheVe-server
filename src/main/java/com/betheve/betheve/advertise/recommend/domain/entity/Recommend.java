@@ -1,18 +1,18 @@
 package com.betheve.betheve.advertise.recommend.domain.entity;
 
 import com.betheve.betheve.advertise.recommend.domain.entity.dto.RestaurantIdDto;
+import com.betheve.betheve.restaurant.domain.entity.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recommend {
@@ -25,8 +25,12 @@ public class Recommend {
 
     private String subTitle;
 
-    private List<RestaurantIdDto> recommendedRestaurantGroup;
-
-
+    @ElementCollection
+    @CollectionTable(
+            name = "recommend_group",
+            joinColumns = @JoinColumn(name = "recommend_id")
+    )
+    @OrderColumn(name = "restaurant_id")
+    private List<Restaurant> recommendedRestaurantGroup;
 
 }

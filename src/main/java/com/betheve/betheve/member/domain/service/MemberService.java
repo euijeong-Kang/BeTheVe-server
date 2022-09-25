@@ -1,6 +1,7 @@
 package com.betheve.betheve.member.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
+import com.betheve.betheve.member.domain.entity.dto.MemberDto;
 
 import java.util.List;
 
@@ -18,6 +19,13 @@ public interface MemberService {
      * @return 개별 회원 정보
      */
     Member getMember(long memberId);
+
+    /**
+     * 회원 등록
+     * @param memberDto
+     * @return 등록된 회원 정보
+     */
+    Member createMember(MemberDto memberDto);
 
     /**
      * 회원정보 업데이트

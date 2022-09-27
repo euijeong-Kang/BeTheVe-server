@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/restaurants")
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
@@ -21,7 +22,7 @@ public class RestaurantController {
     }
 
     @Operation(summary = "전체 식당 조회", description = "등록된 모든 식당을 조회합니다.")
-    @GetMapping("/restaurants")
+    @GetMapping
     public List<Restaurant> getAllRestaurants() {
 
         return restaurantService.getAllRestaurants();
@@ -29,7 +30,7 @@ public class RestaurantController {
     }
 
     @Operation(summary = "식당 조회", description = "식당을 조회합니다.")
-    @GetMapping("/restaurant/{id}")
+    @GetMapping("/{id}")
     public Restaurant getRestaurant(@PathVariable Long id) {
 
         return restaurantService.getRestaurant(id);
@@ -37,7 +38,7 @@ public class RestaurantController {
     }
 
     @Operation(summary = "식당 신규등록", description = "새로운 식당을 등록합니다.")
-    @PostMapping("/restaurant")
+    @PostMapping
     public Restaurant resisterRestaurant(@RequestParam RegisterRestaurantDto restaurantDto) {
 
         return restaurantService.create(restaurantDto);
@@ -45,7 +46,7 @@ public class RestaurantController {
     }
 
     @Operation(summary = "식당 삭제", description = "식당 정보를 삭제합니다.")
-    @DeleteMapping("/restaurant/{id}")
+    @DeleteMapping("/{id}")
     public void deleteRestaurant(@PathVariable long id) {
 
         restaurantService.deleteRestaurant(id);

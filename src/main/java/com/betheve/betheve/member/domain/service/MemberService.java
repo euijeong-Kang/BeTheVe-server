@@ -2,6 +2,7 @@ package com.betheve.betheve.member.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
 import com.betheve.betheve.member.domain.entity.dto.MemberDto;
+import com.betheve.betheve.member.domain.entity.id.MemberId;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface MemberService {
      * @param memberId
      * @return 개별 회원 정보
      */
-    Member getMember(long memberId);
+    Member getMember(MemberId memberId);
 
     /**
      * 회원 등록
@@ -38,7 +39,7 @@ public interface MemberService {
      * 회원 삭제
      * @param memberId
      */
-    void deleteMember(long memberId);
+    void deleteMember(MemberId memberId);
 
 
 }

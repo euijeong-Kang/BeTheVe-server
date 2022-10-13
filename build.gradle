@@ -36,6 +36,13 @@ dependencies {
 
     // Swaager 문서 생성용
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+
+    // Thumbnailator
+    implementation 'net.coobird:thumbnailator:0.4.17'
+
+    // MapStruct용
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
 tasks.named('test') {

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -32,5 +33,7 @@ public class Recommend {
     )
     @OrderColumn(name = "restaurant_id")
     private List<Restaurant> recommendedRestaurantGroup;
+
+    private RecommendRating rating;
 
 }

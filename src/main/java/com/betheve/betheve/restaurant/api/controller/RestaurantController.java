@@ -3,9 +3,10 @@ package com.betheve.betheve.restaurant.api.controller;
 import com.betheve.betheve.restaurant.domain.entity.Restaurant;
 import com.betheve.betheve.restaurant.domain.entity.dto.RegisterRestaurantDto;
 import com.betheve.betheve.restaurant.domain.service.RestaurantService;
-import com.betheve.betheve.restaurant.domain.service.RestaurantServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,15 +32,15 @@ public class RestaurantController {
 
     @Operation(summary = "식당 조회", description = "식당을 조회합니다.")
     @GetMapping("/{id}")
-    public Restaurant getRestaurant(@PathVariable Long id) {
+    public ResponseEntity<Object> getRestaurant(@PathVariable Long id) {
 
-        return restaurantService.getRestaurant(id);
+        return new ResponseEntity<>(restaurantService.getRestaurant(id), HttpStatus.OK) ;
 
     }
 
     @Operation(summary = "식당 신규등록", description = "새로운 식당을 등록합니다.")
     @PostMapping
-    public Restaurant resisterRestaurant(@RequestParam RegisterRestaurantDto restaurantDto) {
+    public Restaurant resisterRestaurant(@RequestBody RegisterRestaurantDto restaurantDto) {
 
         return restaurantService.create(restaurantDto);
 

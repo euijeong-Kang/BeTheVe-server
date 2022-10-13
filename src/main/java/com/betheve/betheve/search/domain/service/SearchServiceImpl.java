@@ -25,6 +25,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public List<Restaurant> searchRestaurant(String searchKeys) {
-        return restaurantRepository.findAllByRestaurantName(searchKeys);
+        List<Restaurant> list = restaurantRepository.findAllByRestaurantNameContains(searchKeys);
+        return list;
     }
 }

@@ -1,6 +1,5 @@
 package com.betheve.betheve.review.api.controller;
 
-import com.betheve.betheve.member.domain.entity.id.MemberId;
 import com.betheve.betheve.review.domain.entity.Review;
 import com.betheve.betheve.review.domain.entity.command.PostReview;
 import com.betheve.betheve.review.domain.service.ReviewService;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.betheve.betheve.oauth.login.api;
+package com.betheve.betheve.auth.login.api;
 
 import org.springframework.web.bind.annotation.RestController;
 

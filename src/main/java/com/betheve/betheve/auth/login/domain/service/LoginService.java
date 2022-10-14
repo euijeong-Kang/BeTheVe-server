@@ -1,13 +1,9 @@
-package com.betheve.betheve.oauth.login.domain.service;
+package com.betheve.betheve.auth.login.domain.service;
 
-import com.betheve.betheve.oauth.login.domain.dto.LoginDto;
-import com.betheve.betheve.oauth.login.domain.dto.LoginSuccessInfo;
 //import com.betheve.betheve.member.domain.entity.Member;
 //import com.betheve.betheve.member.domain.repository.MemberRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+        import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor

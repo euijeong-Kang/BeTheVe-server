@@ -1,6 +1,6 @@
 package com.betheve.betheve.member.domain.entity;
 
-import com.betheve.betheve.member.domain.entity.id.MemberId;
+import com.betheve.betheve.auth.Authority;
 import com.betheve.betheve.review.domain.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -17,28 +18,35 @@ import java.util.List;
 @AllArgsConstructor
 public class Member {
 
-    @EmbeddedId
-    MemberId memberId;
+    @Column(name = "member_id")
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private long memberId;
 
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "member_name")
-    private String memberName;
-
-    @Column(name = "nickname")
-    private String nickName;
-
-    @Column(name = "email")
+    @Column(name = "email",unique = true, nullable = false)
     private String email;
 
-    private UserRole userRole;
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "member_name", length = 50, nullable = false)
+    private String memberName;
+
+    @Column(name = "nickname", unique = true)
+    private String nickName;
 
     @Embedded
     private MemberAddress address;
 
-    @OneToMany
-    private List<Review> reviews;
+//    @OneToMany
+//    private List<Review> reviews;
+
+    @ManyToMany
+    @JoinTable(
+            name = "member_authority",
+            joinColumns = {@JoinColumn(name="member_id",referencedColumnName = "member_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_name",referencedColumnName = "authority_name")}
+    )
+    private Set<Authority> authorities = new HashSet<>();
 
     public Member() {}
 
@@ -46,10 +54,6 @@ public class Member {
         this.setMemberId(memberId);
     }
 
-    private void setMemberId(long memberId) {
-        this.memberId = new MemberId();
-        this.memberId.setMemberId(memberId);
-    }
 
     public boolean correctPassword(String password) {
         return !StringUtils.isEmpty(this.password) && this.password.equals(password);
@@ -61,7 +65,7 @@ public class Member {
 
     public Review PostReview(long restaurantId, String content, byte score) {
         return Review.builder()
-                .memberId(this.memberId.getMemberId())
+                .memberId(this.memberId)
                 .restaurantId(restaurantId)
                 .content(content)
                 .score(score)

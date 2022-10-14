@@ -1,8 +1,6 @@
 package com.betheve.betheve.review.domain.service;
 
 import com.betheve.betheve.member.domain.entity.Member;
-import com.betheve.betheve.member.domain.entity.id.MemberId;
-import com.betheve.betheve.restaurant.domain.entity.Restaurant;
 import com.betheve.betheve.review.domain.entity.Review;
 import com.betheve.betheve.review.domain.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;

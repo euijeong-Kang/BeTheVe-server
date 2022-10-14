@@ -1,4 +1,4 @@
-package com.betheve.betheve.oauth.login.domain.dto;
+package com.betheve.betheve.auth.login.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

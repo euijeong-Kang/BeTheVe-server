@@ -1,6 +1,5 @@
 package com.betheve.betheve.review.domain.repository;
 
-import com.betheve.betheve.member.domain.entity.id.MemberId;
 import com.betheve.betheve.review.domain.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

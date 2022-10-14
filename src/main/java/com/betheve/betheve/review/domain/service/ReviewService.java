@@ -1,6 +1,5 @@
 package com.betheve.betheve.review.domain.service;
 
-import com.betheve.betheve.member.domain.entity.id.MemberId;
 import com.betheve.betheve.review.domain.entity.Review;
 
 import java.util.List;

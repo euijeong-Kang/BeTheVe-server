@@ -1,13 +1,10 @@
 package com.betheve.betheve.auth.domain.entity.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Builder
-@Getter
-@RequiredArgsConstructor
+@Getter @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class TokenDto {
 

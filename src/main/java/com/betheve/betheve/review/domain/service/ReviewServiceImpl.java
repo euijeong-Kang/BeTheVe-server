@@ -1,7 +1,9 @@
 package com.betheve.betheve.review.domain.service;
 
+import com.betheve.betheve.common.exception.BusinessException;
 import com.betheve.betheve.member.domain.entity.Member;
 import com.betheve.betheve.review.domain.entity.Review;
+import com.betheve.betheve.review.domain.entity.dto.PostReviewDto;
 import com.betheve.betheve.review.domain.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +21,13 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review postReview(long restaurantId, long memberId, String content, byte score) {
+    public Review postReview(long restaurantId, Member author, PostReviewDto postReviewDto) {
 
 //        if(repo.existsByMemberAndRestaurant(memberId, restaurantId)) {
 //            throw new IllegalArgumentException("가게당 1개의 리뷰만 작성 할 수 있습니다.");
 //        }
 
-        Member author = new Member(memberId);
-
-        Review review = author.PostReview(restaurantId, content, score);
+        Review review = author.PostReview(restaurantId, postReviewDto.getContent(), postReviewDto.getScore());
 
         repo.save(review);
 
@@ -41,12 +41,22 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public void deleteReview(long memberId, long reviewId) {
+    public boolean deleteReview(Member owner, long reviewId) throws BusinessException {
 
-        Member owner = new Member(memberId);
+        Review review = repo.findByReviewId(reviewId)
+                .orElseThrow(() -> new BusinessException("리뷰 정보 없음"));
 
-        repo.findByMemberIdAndReviewId(memberId, reviewId);
+        if(owner.hasOwnershipOf(review)) {
+            repo.delete(review);
+            return true;
+        }
 
+        return false;
+    }
 
+    @Override
+    public List<Review> getAllRestaurantReview(long restaurantId) {
+
+        return repo.findAllByRestaurantId(restaurantId);
     }
 }

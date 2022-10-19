@@ -5,8 +5,6 @@ import com.betheve.betheve.review.domain.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -50,17 +48,12 @@ public class Member {
 
     public Member() {}
 
-    public Member(long memberId) {
-        this.setMemberId(memberId);
-    }
-
-
-    public boolean correctPassword(String password) {
-        return !StringUtils.isEmpty(this.password) && this.password.equals(password);
-    }
-
-    public boolean checkPassword(String plainPassword, PasswordEncoder passwordEncoder) {
-        return passwordEncoder.matches(plainPassword, this.password);
+    public Member(String email, String password, String memberName, String nickName, Set<Authority> authorities) {
+        this.email = email;
+        this.password = password;
+        this.memberName = memberName;
+        this.nickName = nickName;
+        this.authorities = authorities;
     }
 
     public Review PostReview(long restaurantId, String content, byte score) {
@@ -72,11 +65,9 @@ public class Member {
                 .build();
     }
 
-    public boolean deleteReview(Review review) {
+    public boolean hasOwnershipOf(Review review) {
 
-        return false;
+        return this.memberId == review.getMemberId();
     }
-
-
 
 }
